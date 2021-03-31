@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Vue.js</title>
+    </head>
+    <body>
+        <div id="app">
+          <my-hello your-name="HogeHoge" init="0">ROGER</my-hello>
+          <p>現在値: {{ currentCount }}</p>
+          <my-counter step="1" v-on:plus="onplus"></my-counter>
+          <my-counter step="2" v-on:plus="onplus"></my-counter>
+          <my-counter step="-1" v-on:plus="onplus"></my-counter>
+
+          <my-slot>
+            <template v-slot:header>
+              <h3>Slotは便利</h3>
+            </template>
+            <p>勉強すんべねぇ〜</p>
+
+            <template v-slot:footer>
+              <span>Written by ROGER</span>
+            </template>
+
+            <p>質問はどしどしとね</p>
+          </my-slot>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="components/basic.js"></script>
+    </body>
+</html>

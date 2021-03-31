@@ -1,0 +1,161 @@
+.banner {
+  width: 350px;
+  padding: 10px;
+  border: medium solid #000;
+  border-radius: 10px;
+  background-color: #ffffcc;
+  font-size: smaller;
+}
+
+h3 {
+  font-size: 150%;
+  color: #800000;
+}
+
+#container {
+  width: 450px;
+}
+
+#container > ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+#container > ul li {
+  list-style-type: none;
+  float: left;
+  line-height: 160%;
+  width: 150px;
+  height: 40px;
+}
+
+
+#container > ul li a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  background-color: #f8f1b3;
+  color: #000;
+  border: solid 1px Black;
+}
+
+#container > div {
+  border: 1px solid #c0c0c0;
+  background-color: #fcfbf4;
+  border-top: none;
+  padding: 15px;
+}
+
+#panel {
+  border: 1px solid #000;
+  width: 350px;
+  overflow: hidden;
+}
+
+.v-enter-active, .v-leave-active {
+  transition: height 1s;
+}
+
+.v-enter {
+  height: 0px;
+}
+
+.v-enter-to {
+  height: 200px;
+}
+
+.v-leave {
+  height: 200px;
+}
+
+.v-leave-to {
+  height: 0px;
+}
+
+.panel {
+  border: 1px solid #000;
+  width: 350px;
+  overflow: hidden;
+}
+
+.panel-enter-active, .panel-leave-active {
+  transition: opacity 5s;
+  
+}
+
+.panel-leave-active {
+    position: absolute;
+}
+
+.panel-enter, .panel-leave-to {
+  opacity: 0.0;
+}
+
+.group-enter-active, .group-leave-active, .group-move {
+  transition: transform 1s;
+}
+
+.group-enter, .group-leave-to {
+  transform: translateX(80%);
+}
+
+.group-leave-active {
+  position: absolute;
+}
+
+/* フェードイン／アウト */
+/*
+.v-enter-active, .v-leave-active {
+  transition: opacity 5s;
+}
+
+.v-enter {
+  opacity: 0.0;
+}
+
+.v-enter-to {
+  opacity: 1.0;
+}
+
+.v-leave {
+  opacity: 1.0;
+}
+
+.v-leave-to {
+  opacity: 0.0;
+}
+*/
+
+/* フェードイン／アウトのコンパクト化 */
+
+/* .v-enter-active, .v-leave-active {
+  transition: opacity 5s;
+}
+
+.v-enter, .v-leave-to {
+  opacity: 0.0;
+} */
+
+
+/* キーフレーム */
+/*
+@keyframes slide-in {
+  0% {
+    transform: translateX(100%);
+  }
+  10% {
+    transform: translateX(20%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.v-enter-active {
+  animation: slide-in 1.5s;
+}
+
+.v-leave-active {
+  animation: slide-in 1.5s reverse;
+}
+*/

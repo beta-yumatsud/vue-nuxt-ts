@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Vue.js</title>
+        <link rel="stylesheet" href="css/dynamic.css" />
+    </head>
+    <body>
+        <div id="app">
+          <!-- 表示すべきコンポーネントはis属性で表します -->
+          <!-- component v-bind:is="currentBanner" /> -->
+          <div>
+            <component v-bind:is="currentBanner" />
+          </div>
+
+          <div id="container">
+            <ul>
+              <li v-for="tab in tabNames">
+                <a href="#" v-on:click.prepend="ontabclick(tab)">{{ tabs[tab] }}</a>
+              </li>
+            </ul>
+            <keep-alive>
+              <component v-bind:is="currentTab"></component>
+            </keep-alive>
+          </div>
+
+          <div>
+            <my-input v-model="message"></my-input>
+            <p>入力値: {{ message }}</p>
+          </div>
+
+          <div>
+            <input type="button" value="ON/OFF" v-on:click="onswitchclick" />
+            <transition appear>
+              <div id="panel" v-show="flag">WINGSプロジェクトでご一緒にお仕事ができる仲間を募集中です。</div>
+            </transition>
+            <transition mode="out-in" name="panel">
+              <div class="panel" v-bind:key="id">
+                {{ panels[id] }}
+              </div>
+            </transition>
+          </div>
+
+          <div id="list">
+            <form>
+              <label for="todo">やること: </label>
+              <input id="todo" type="text" size="40" v-model="todo" /><br />
+              <input type="button" value="追加" v-on:click="onadd" />
+              <input type="button" value="削除" v-on:click="onremove" />
+              <input type="button" value="ソート" v-on:click="onsort" />
+
+              <transition-group name="group" tag="ul">
+                <li v-for="item in items" v-bind:key="item">{{ item }}</li>
+              </transition-group>
+            </form>
+          </div>
+          <div>
+            <span v-highlight.border.once="color">{{ title | trim }}</span>でご一緒にお仕事ができる仲間を<span v-highlight:text="color">募集中</span>です。
+          </div>
+          <div>
+            <my-comp></my-comp>
+          </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+        <script src="components/dynamic.js"></script>
+    </body>
+</html>
