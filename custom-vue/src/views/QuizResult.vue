@@ -4,20 +4,22 @@
       <h2 class="title">結果発表</h2>
       <table class="table is-bordered">
         <tr>
-          <th v-for="(q, index) in questions">
-            Q{{ index + 1 }}
-          </th>
+          <th v-for="(q, index) in questions" :key="q.id">Q{{ index + 1 }}</th>
         </tr>
         <tr>
           <td
-            v-for="correct in corrects" :class="getCorrectClassName(correct.cd)">
+            v-for="correct in corrects"
+            :class="getCorrectClassName(correct.cd)"
+            :key="correct.value"
+          >
             {{ correct.value }}
           </td>
         </tr>
       </table>
       <p>あなたの得点は</p>
       <p>
-        <strong class="is-size-2 has-text-danger">{{ totalScore }}</strong>/{{ maxPoint }}点でした!!
+        <strong class="is-size-2 has-text-danger">{{ totalScore }}</strong
+        >/{{ maxPoint }}点でした!!
       </p>
       <button
         class="button is-fullwidth is-info has-text-weight-bold"
@@ -30,14 +32,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, SetupContext } from "vue";
-
-export const ANSWER = { YES: 1, NO: 0 };
+import { defineComponent, computed, SetupContext, PropType } from "vue";
+import { Question } from "@/views/Quiz.vue";
 
 type ResultProps = {
   totalScore: number;
-  questions: string[];
-  answers: string[];
+  questions: Question[];
+  answers: number[];
 };
 
 const CORRECT = { CD: 1, VALUE: "◯" };
@@ -49,10 +50,16 @@ export default defineComponent({
   props: {
     totalScore: {
       type: Number,
-      required: true,
+      default: 0,
     },
-    questions: Array,
-    answers: Array,
+    questions: {
+      type: Array as PropType<Question[]>,
+      default: [],
+    },
+    answers: {
+      type: Array as PropType<number[]>,
+      default: [],
+    },
   },
   setup(props: ResultProps, context: SetupContext) {
     const corrects = computed(() => {
@@ -73,7 +80,7 @@ export default defineComponent({
     const onClick = () => {
       context.emit("click");
     };
-    const getCorrectClassName = (correctCd) => {
+    const getCorrectClassName = (correctCd: number) => {
       return correctCd === CORRECT.CD
         ? "has-text-weight-bold has-text-white has-background-success"
         : "";

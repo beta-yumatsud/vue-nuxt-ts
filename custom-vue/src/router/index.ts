@@ -4,6 +4,7 @@ import Modal from "../views/Modal.vue";
 import Carousel from "@/views/Carousel.vue";
 import Accordion from "../views/Accordion.vue";
 import Product from "@/views/Product.vue";
+import Quiz from "@/views/Quiz.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -39,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/product",
     name: "Product",
     component: Product,
+  },
+  {
+    path: "/quiz",
+    name: "Quiz",
+    component: Quiz,
   },
 ];
 

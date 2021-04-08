@@ -5,7 +5,8 @@
     <router-link to="/modal">Modal</router-link> |
     <router-link to="/carousel">Carousel</router-link> |
     <router-link to="/accordion">Accordion</router-link> |
-    <router-link to="/product">Product</router-link>
+    <router-link to="/product">Product</router-link> |
+    <router-link to="/quiz">Quiz</router-link>
   </div>
   <router-view />
 </template>
